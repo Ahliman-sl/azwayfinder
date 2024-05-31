@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.leaflet-control-container .leaflet-routing-container-hide {
+  display: none;
+}
+
+body {
+  background-color: black;
+}
