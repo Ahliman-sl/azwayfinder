@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Map from "../components/Map";
 import SearchBar from "../components/SearchBar.jsx";
 import SelectOption from "../components/SelectOption.jsx";
@@ -16,8 +16,9 @@ function Home() {
   const [distance, setDistance] = useState(null);
   const [duration, setDuration] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const mapRef = useRef(null);
 
-  // Weather hook'unu kullanmak için gerekli state'leri ekledik
+  // hook-dan datani aliriq
   const { weatherData, error } = useGetWeather(endCity, selectedDate);
 
   useEffect(() => {
@@ -36,6 +37,12 @@ function Home() {
     }
   }, [endCity]);
 
+  useEffect(() => {
+    if (distance !== null && mapRef.current !== null) {
+      mapRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [distance]);
+
   const handleRouteCalculated = (calculatedDistance, calculatedDuration) => {
     setDistance(calculatedDistance);
     setDuration(calculatedDuration);
@@ -53,7 +60,7 @@ function Home() {
     <section>
       <div className="container px-4 w-[98%] h-full mx-auto">
         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-4 bg-slate-900 flex flex-col pb-5">
+          <div className="col-span-4 sm:col-span-12 bg-slate-900 flex flex-col pb-5">
             <LogoTitle />
             <div className="w-full h-max">
               <SearchBar onSelectCity={handleSelectCity} />
@@ -86,7 +93,10 @@ function Home() {
             />
           </div>
 
-          <div className="col-span-4 lg:col-span-8 w-full h-[40rem] md:h-full lg:h-full bg-orange-500">
+          <div
+            ref={mapRef}
+            className="col-span-4 sm:col-span-12 w-full h-[40rem] mb-5 bg-orange-500"
+          >
             <Map
               startCoordinates={startCoordinates}
               endCoordinates={endCoordinates}

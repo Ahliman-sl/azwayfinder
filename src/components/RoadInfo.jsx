@@ -13,12 +13,11 @@ import snow from "../Images/Weather/snow.png";
 function RoadInfo({ distance, duration, weatherData, error }) {
   console.log(weatherData);
   function timer() {
-    const saat = Math.floor(duration / 60); // Tam sayı kısmı saat olarak al
-    const dakikaKalan = Math.round(duration % 60); // Kalan kısmı dakika olarak al ve yuvarla
+    const saat = Math.floor(duration / 60);
+    const dakikaKalan = Math.round(duration % 60);
     return `${saat} saat ${dakikaKalan} dakika`;
   }
 
-  // Hava durumu ikonunu almak için bir fonksiyon
   function getWeatherIcon(icon) {
     switch (icon) {
       case "Clear":
@@ -38,7 +37,7 @@ function RoadInfo({ distance, duration, weatherData, error }) {
   }
 
   return (
-    <div className="w-full h-max flex flex-wrap px-2 gap-2 mt-2 items-center justify-center">
+    <div className="w-full h-max flex flex-wrap px-2 gap-2 sm:gap-10 mt-2 items-center justify-center">
       <div className="w-max h-max p-5 bg-slate-800 rounded-sm">
         <p className="text-2xl text-gray-400 flex items-center justify-center gap-2">
           Məsafə{" "}
@@ -67,7 +66,9 @@ function RoadInfo({ distance, duration, weatherData, error }) {
           </span>
         </p>
         {error ? (
-          <p className="text-red-500">Hava durumu bilgisine ulaşılamıyor.</p>
+          <p className="text-red-500">
+            Hava proqnozu göstərilə bilmir yeniden cəhd edin.
+          </p>
         ) : (
           weatherData && (
             <div className="w-full h-max flex flex-col items-center justify-center">
@@ -75,7 +76,6 @@ function RoadInfo({ distance, duration, weatherData, error }) {
                 <p className="text-3xl font-semibold text-emerald-50">
                   {weatherData.main.temp} °C
                 </p>
-                {/* Hava durumu görselini API'den aldığınız şekilde gösterebilirsiniz */}
                 <img
                   src={getWeatherIcon(weatherData.weather[0].main)}
                   className="w-[6rem] h-auto"
