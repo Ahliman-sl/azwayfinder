@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import Map from "../components/Map";
 import SearchBar from "../components/SearchBar.jsx";
 import SelectOption from "../components/SelectOption.jsx";
@@ -6,16 +6,26 @@ import DatePicker from "../components/DatePicker.jsx";
 import LogoTitle from "../components/LogoTitle.jsx";
 import RoadInfo from "../components/RoadInfo.jsx";
 import { geocodeCity } from "../components/geocodeCity.jsx";
-import useGetWeather from "../components/getWeather.jsx"; // Weather hook'u ekledik
+import useGetWeather from "../components/getWeather.jsx";
+import { AppContext } from "../../context/AppContext.jsx";
 
 function Home() {
-  const [startCity, setStartCity] = useState("");
-  const [endCity, setEndCity] = useState("");
-  const [startCoordinates, setStartCoordinates] = useState(null);
-  const [endCoordinates, setEndCoordinates] = useState(null);
-  const [distance, setDistance] = useState(null);
-  const [duration, setDuration] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const {
+    startCity,
+    setStartCity,
+    endCity,
+    setEndCity,
+    startCoordinates,
+    setStartCoordinates,
+    endCoordinates,
+    setEndCoordinates,
+    distance,
+    setDistance,
+    duration,
+    setDuration,
+    selectedDate,
+    setSelectedDate,
+  } = useContext(AppContext);
   const mapRef = useRef(null);
 
   // hook-dan datani aliriq
@@ -27,7 +37,7 @@ function Home() {
         .then((coords) => setStartCoordinates(coords))
         .catch((err) => console.error(err));
     }
-  }, [startCity]);
+  }, [startCity, setStartCoordinates]);
 
   useEffect(() => {
     if (endCity) {
@@ -35,7 +45,7 @@ function Home() {
         .then((coords) => setEndCoordinates(coords))
         .catch((err) => console.error(err));
     }
-  }, [endCity]);
+  }, [endCity, setEndCoordinates]);
 
   useEffect(() => {
     if (distance !== null && mapRef.current !== null) {
