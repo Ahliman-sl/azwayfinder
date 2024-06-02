@@ -4,7 +4,6 @@ export default function DatePicker({ setSelectedDate }) {
     setSelectedDate(new Date(event.target.value));
   };
 
-  // Yeni bir tarix obyekti yaradın
   const now = new Date();
 
   // Tarixi Azərbaycan formatında göstərmək üçün Intl.DateTimeFormat obyektini yaradın
@@ -26,7 +25,7 @@ export default function DatePicker({ setSelectedDate }) {
           id="id-date01"
           type="date"
           name="id-date01"
-          className="peer relative h-10 w-[10rem] rounded-md border bg-gray-900 border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all  invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-gray-900 disabled:text-slate-400"
+          className="peer relative h-10 w-[10rem] text-center rounded-md border bg-gray-900 border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all  invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-gray-900 disabled:text-slate-400"
           value={formattedDate.split(",")[0]}
           onChange={handleDateChange}
           disabled
