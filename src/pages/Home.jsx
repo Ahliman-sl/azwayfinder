@@ -8,6 +8,7 @@ import RoadInfo from "../components/RoadInfo.jsx";
 import { geocodeCity } from "../components/geocodeCity.jsx";
 import { AppContext } from "../../context/AppContext.jsx";
 import backvideo1 from "../Videos/backvideo1.mp4";
+import UpButton from "../components/UpButton.jsx";
 
 function Home() {
   const {
@@ -64,6 +65,7 @@ function Home() {
 
   return (
     <section>
+      <UpButton />
       <div className="container px-4 w-[98%] h-full mx-auto">
         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
           <div className="col-span-4 sm:col-span-12  flex flex-col pb-5  text-center homePage overflow-hidden">
