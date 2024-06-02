@@ -27,14 +27,14 @@ export default function SearchBar({ onSelectCity }) {
   return (
     <>
       {/*<!-- Component: Plain basic base sized search input  --> */}
-      <div className="relative my-6 mx-4">
+      <div className="relative my-6 mx-4 text-start">
         <input
           id="id-s01"
           type="search"
           name="id-s01"
           value={searchTerm}
           onChange={handleSearch}
-          placeholder="Search here"
+          placeholder="Axtarış et"
           aria-label="Search content"
           className="peer relative h-10 w-full rounded-xl border  border-gray-400 px-4 pr-12 text-sm text-slate-400 outline-none transition-all bg-gray-900  focus:border-slate-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
         />

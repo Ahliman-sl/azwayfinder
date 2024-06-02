@@ -41,7 +41,7 @@ function RoadInfo() {
   }
 
   return (
-    <div className="w-full h-max flex flex-wrap px-2 gap-2 sm:gap-10 mt-2 items-center justify-center">
+    <div className="w-full h-max flex  flex-wrap px-2 gap-2 sm:gap-10 mt-2 items-center justify-center">
       <div className="w-max h-max p-5 bg-slate-800 rounded-sm">
         <p className="text-2xl text-gray-400 flex items-center justify-center gap-2">
           Məsafə{" "}
@@ -90,7 +90,7 @@ function RoadInfo() {
           )
         )}
       </div>
-      <div className="w-max h-max p-5 bg-slate-800 flex flex-col items-center justify-center gap-2">
+      <div className="w-max h-max p-5  bg-slate-800 flex flex-col items-center justify-center gap-2">
         <p className="text-2xl text-gray-400 flex items-center justify-center gap-2">
           Xəritədə göstər{" "}
           <span>

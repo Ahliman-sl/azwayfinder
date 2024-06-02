@@ -8,10 +8,8 @@ function useGetWeather(city, date) {
   useEffect(() => {
     if (!city || !date) return;
 
-    const formattedDate = date.toISOString().split("T")[0];
-
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&dt=${formattedDate}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     )
       .then((res) => res.json())
       .then((data) => {

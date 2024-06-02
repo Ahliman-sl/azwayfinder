@@ -66,7 +66,7 @@ function Home() {
     <section>
       <div className="container px-4 w-[98%] h-full mx-auto">
         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-4 sm:col-span-12  flex flex-col pb-5  homePage">
+          <div className="col-span-4 sm:col-span-12  flex flex-col pb-5  text-center homePage overflow-hidden">
             <video autoPlay loop muted>
               <source src={backvideo1} type="video/mp4" />
               Your browser does not support the video tag.
@@ -88,7 +88,9 @@ function Home() {
             </div>
             <div className="w-full h-max flex items-center justify-center">
               <div className="w-max h-max flex flex-col justify-center text-slate-200 font-semibold">
-                <p className="text-md text-center">Səyahət vaxtı :</p>
+                <p className="text-md text-center text-gray-200">
+                  Səyahət vaxtı :
+                </p>
                 <DatePicker
                   setSelectedDate={setSelectedDate}
                   selectedDate={selectedDate}

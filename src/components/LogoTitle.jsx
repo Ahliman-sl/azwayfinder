@@ -42,7 +42,7 @@ function LogoTitle() {
         </div>
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center mx-5  sm:mx-3 lg:mx-0 bg-black bg-opacity-50 z-[50]">
+        <div className="fixed inset-0 flex items-center justify-center mx-5  sm:mx-3 lg:mx-0 bg-black bg-opacity-50 z-[2000]">
           <div
             className="bg-white p-5 rounded-lg shadow-lg max-w-lg w-full relative"
             ref={modalRef}
@@ -56,14 +56,14 @@ function LogoTitle() {
             <h2 className="text-2xl font-bold mb-4">AzwayFinder haqqında</h2>
             <p>
               <span className="text-black font-bold">Azwayfinder </span>
-              vasitəsilə siz Azərbaycan daxilində getmək istədiyiniz şəhərlər
+              {`vasitəsilə siz Azərbaycan daxilində getmək istədiyiniz şəhərlər
               arasındakı məsafəni görə bilər,Seçilən tarixə uyğun olarak
               gedəcəyiniz şəhərdəki hava proqnozu ilə tanış ola bilərsiniz.
               Həmçinin yol üzərindəki Yanacaq doldurma məntəqələrini,istirahət
-              mərkəzlərini və radarları görə bilərsiniz. Bu proyekt, Ahliman
-              Suleymanli tərəfindən React, TailwindCSS ve Leaflet istifadə
-              edilərək hazırlanmışdır. Aşağıdakı sosial media hesaplarından məni
-              izləməyi unutmayın.
+              mərkəzlərini və radarları görə bilərsiniz (tezliklə). Bu proyekt,
+              Ahliman Suleymanli tərəfindən React, TailwindCSS ve Leaflet
+              istifadə edilərək hazırlanmışdır. Aşağıdakı sosial media
+              hesaplarından məni izləməyi unutmayın.`}
               <div className="flex flex-row gap-2 text-2xl p-2">
                 <a
                   href={"https://linkedin.com/in/ahliman-suleymanli-7a44a0302"}
