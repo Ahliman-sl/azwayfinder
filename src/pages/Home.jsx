@@ -6,7 +6,6 @@ import DatePicker from "../components/DatePicker.jsx";
 import LogoTitle from "../components/LogoTitle.jsx";
 import RoadInfo from "../components/RoadInfo.jsx";
 import { geocodeCity } from "../components/geocodeCity.jsx";
-import useGetWeather from "../components/getWeather.jsx";
 import { AppContext } from "../../context/AppContext.jsx";
 
 function Home() {
@@ -21,15 +20,11 @@ function Home() {
     setEndCoordinates,
     distance,
     setDistance,
-    duration,
     setDuration,
     selectedDate,
     setSelectedDate,
   } = useContext(AppContext);
   const mapRef = useRef(null);
-
-  // hook-dan datani aliriq
-  const { weatherData, error } = useGetWeather(endCity, selectedDate);
 
   useEffect(() => {
     if (startCity) {
@@ -94,13 +89,7 @@ function Home() {
                 />
               </div>
             </div>
-            {/* WeatherData prop'unu RoadInfo bileşenine ekledik */}
-            <RoadInfo
-              distance={distance}
-              duration={duration}
-              weatherData={weatherData}
-              error={error}
-            />
+            <RoadInfo />
           </div>
 
           <div

@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+
+import { useContext } from "react";
 import { GrWaypoint } from "react-icons/gr";
 import { IoMdClock } from "react-icons/io";
 import { TiWeatherWindyCloudy } from "react-icons/ti";
@@ -9,9 +11,11 @@ import clouds from "../Images/Weather/clouds.png";
 import drizzle from "../Images/Weather/drizzle.png";
 import rain from "../Images/Weather/rain.png";
 import snow from "../Images/Weather/snow.png";
+import { AppContext } from "../../context/AppContext.jsx";
 
-function RoadInfo({ distance, duration, weatherData, error }) {
-  console.log(weatherData);
+function RoadInfo() {
+  const { distance, duration, weatherData, error } = useContext(AppContext);
+
   function timer() {
     const saat = Math.floor(duration / 60);
     const dakikaKalan = Math.round(duration % 60);
@@ -82,9 +86,6 @@ function RoadInfo({ distance, duration, weatherData, error }) {
                   alt="weather"
                 />
               </div>
-              <p className="font-semibold text-md text-slate-100">
-                {weatherData.weather[0].description}
-              </p>
             </div>
           )
         )}

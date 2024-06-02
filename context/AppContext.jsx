@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
+import useGetWeather from "../src/components/getWeather.jsx";
 
 const AppContext = createContext();
 
@@ -11,6 +12,7 @@ function AppProvider({ children }) {
   const [distance, setDistance] = useState(null);
   const [duration, setDuration] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const { weatherData, error } = useGetWeather(endCity, selectedDate);
 
   return (
     <AppContext.Provider
@@ -29,6 +31,8 @@ function AppProvider({ children }) {
         setDuration,
         selectedDate,
         setSelectedDate,
+        weatherData,
+        error,
       }}
     >
       {children}

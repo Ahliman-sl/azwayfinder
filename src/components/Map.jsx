@@ -3,10 +3,23 @@ import { useEffect } from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-routing-machine";
-
+import { FaMapMarkerAlt } from "react-icons/fa"; // İkonları içe aktarıyoruz
+import { renderToStaticMarkup } from "react-dom/server"; // React bileşenini HTML'ye dönüştürmek için
 const center = {
   lat: 40.4093, // Baku, Azerbaijan'ın koordinatları
   lng: 49.8671,
+};
+
+// React ikonu kullanarak custom marker ikonu oluşturma
+const createCustomMarkerIcon = () => {
+  const iconMarkup = renderToStaticMarkup(
+    <FaMapMarkerAlt color="black" size="24px" />
+  );
+  return new L.DivIcon({
+    html: iconMarkup,
+    iconSize: [24, 24],
+    className: "custom-marker-icon", // Özel CSS sınıfı ekleyebilirsiniz
+  });
 };
 
 function Routing({ startCoordinates, endCoordinates, onRouteCalculated }) {
@@ -63,13 +76,12 @@ function Map({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {startCoordinates && (
-        <Marker position={startCoordinates}>
-          {" "}
+        <Marker position={startCoordinates} icon={createCustomMarkerIcon()}>
           <Popup>{startCity}</Popup>
         </Marker>
       )}
       {endCoordinates && (
-        <Marker position={endCoordinates}>
+        <Marker position={endCoordinates} icon={createCustomMarkerIcon()}>
           <Popup>{endCity}</Popup>
         </Marker>
       )}
