@@ -19,7 +19,7 @@ function RoadInfo() {
   function timer() {
     const saat = Math.floor(duration / 60);
     const dakikaKalan = Math.round(duration % 60);
-    return `${saat} saat ${dakikaKalan} dakika`;
+    return `${saat} saat ${dakikaKalan} dəqiqə`;
   }
 
   function getWeatherIcon(icon) {
