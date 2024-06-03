@@ -5,7 +5,7 @@ export default function SelectOption({ value, onChange }) {
   return (
     <>
       {/*<!-- Component: Plain base basic select --> */}
-      <div className="relative my-4 w-[7rem] md:w-[10rem]">
+      <div className="relative my-4 w-[7.8rem]  md:w-[10rem]">
         <select
           id="id-01"
           name="id-01"
