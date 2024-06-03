@@ -1,13 +1,13 @@
-import { useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Map from "../components/Map";
 import SearchBar from "../components/SearchBar.jsx";
 import SelectOption from "../components/SelectOption.jsx";
 import DatePicker from "../components/DatePicker.jsx";
 import LogoTitle from "../components/LogoTitle.jsx";
 import RoadInfo from "../components/RoadInfo.jsx";
+import Spinner from "../components/Spinner.jsx";
 import { geocodeCity } from "../components/geocodeCity.jsx";
 import { AppContext } from "../../context/AppContext.jsx";
-// import backvideo1 from "../Videos/backvideo1.mp4";
 import UpButton from "../components/UpButton.jsx";
 
 function Home() {
@@ -27,20 +27,27 @@ function Home() {
     setSelectedDate,
   } = useContext(AppContext);
   const mapRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (startCity) {
-      geocodeCity(startCity)
+      geocodeCity(startCity, setLoading)
         .then((coords) => setStartCoordinates(coords))
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          setLoading(false);
+          console.error(err);
+        });
     }
   }, [startCity, setStartCoordinates]);
 
   useEffect(() => {
     if (endCity) {
-      geocodeCity(endCity)
+      geocodeCity(endCity, setLoading)
         .then((coords) => setEndCoordinates(coords))
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          setLoading(false);
+          console.error(err);
+        });
     }
   }, [endCity, setEndCoordinates]);
 
@@ -65,20 +72,20 @@ function Home() {
 
   return (
     <section>
+      {loading && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50">
+          <Spinner />
+        </div>
+      )}
       <UpButton />
       <div className="container px-4 w-[98%] h-full mx-auto">
         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-4 sm:col-span-12  flex flex-col pb-5  text-center homePage overflow-hidden">
-            {/* <video autoPlay loop muted>
-              <source src={backvideo1} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video> */}
-            {/* <div className="overlay"></div> */}
+          <div className="col-span-4 sm:col-span-12 flex flex-col pb-5 text-center homePage overflow-hidden">
             <LogoTitle />
             <div className="w-full h-max">
               <SearchBar onSelectCity={handleSelectCity} />
             </div>
-            <div className="w-full h-max flex flex-row sm:flex-row items-center gap-2 justify-around ">
+            <div className="w-full h-max flex flex-row sm:flex-row items-center gap-2 justify-around">
               <SelectOption
                 value={startCity}
                 onChange={(e) => setStartCity(e.target.value)}
