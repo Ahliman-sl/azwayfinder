@@ -7,7 +7,7 @@ import LogoTitle from "../components/LogoTitle.jsx";
 import RoadInfo from "../components/RoadInfo.jsx";
 import { geocodeCity } from "../components/geocodeCity.jsx";
 import { AppContext } from "../../context/AppContext.jsx";
-import backvideo1 from "../Videos/backvideo1.mp4";
+// import backvideo1 from "../Videos/backvideo1.mp4";
 import UpButton from "../components/UpButton.jsx";
 
 function Home() {
@@ -69,10 +69,10 @@ function Home() {
       <div className="container px-4 w-[98%] h-full mx-auto">
         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
           <div className="col-span-4 sm:col-span-12  flex flex-col pb-5  text-center homePage overflow-hidden">
-            <video autoPlay loop muted>
+            {/* <video autoPlay loop muted>
               <source src={backvideo1} type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
+            </video> */}
             {/* <div className="overlay"></div> */}
             <LogoTitle />
             <div className="w-full h-max">
